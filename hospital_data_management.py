@@ -105,7 +105,7 @@ def main():
         elif choice == "4":
             doctor_name = input("Enter doctor name: ")
             patients = hospital.show_doctor_patients(doctor_name)
-            if isinstance(patients, str):  # error message
+            if isinstance(patients, str):
                 print(patients)
             else:
                 if not patients:
