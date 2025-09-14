@@ -71,7 +71,6 @@ class Hospital:
         return doctor.show_patients()
 
 
-# ---------------- MENU SYSTEM ----------------
 def main():
     hospital = Hospital()
 
