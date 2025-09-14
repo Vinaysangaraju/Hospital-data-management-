@@ -14,7 +14,7 @@ class Doctor:
     def __init__(self, name, specialization):
         self.name = name
         self.specialization = specialization
-        self.queue = deque()  # Queue for patients
+        self.queue = deque() 
 
     def add_patient(self, patient):
         self.queue.append(patient)
