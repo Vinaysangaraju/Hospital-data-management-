@@ -1,20 +1,20 @@
 from collections import deque
 
 class Patient:
-    def __init__(self, name, age, disease):
+    def _init_(self, name, age, disease):
         self.name = name
         self.age = age
         self.disease = disease
 
-    def __str__(self):
+    def _str_(self):
         return f"Patient: {self.name}, Age: {self.age}, Disease: {self.disease}"
 
 
 class Doctor:
-    def __init__(self, name, specialization):
+    def _init_(self, name, specialization):
         self.name = name
         self.specialization = specialization
-        self.queue = deque() 
+        self.queue = deque()  
 
     def add_patient(self, patient):
         self.queue.append(patient)
@@ -29,7 +29,7 @@ class Doctor:
 
 
 class Hospital:
-    def __init__(self):
+    def _init_(self):
         self.doctors = {}
         self.patients = {}  
 
@@ -46,7 +46,7 @@ class Hospital:
             print(f"Patient {name} already exists.")
             return
         patient = Patient(name, age, disease)
-        self.patients[name] = patient 
+        self.patients[name] = patient  
         print(f"Patient {name} added.")
 
     def assign_patient(self, patient_name, doctor_name):
@@ -70,6 +70,25 @@ class Hospital:
             return "Doctor not found"
         return doctor.show_patients()
 
+    def summary(self):
+        print("\n===== HOSPITAL SUMMARY =====")
+        print("\n--- Doctors and Their Patients ---")
+        if not self.doctors:
+            print("No doctors in hospital.")
+        for doc_name, doc in self.doctors.items():
+            print(f"\nDr. {doc_name} ({doc.specialization}) has {len(doc.queue)} patients:")
+            if doc.queue:
+                for p in doc.queue:
+                    print(f"   - {p}")
+            else:
+                print("   No patients assigned.")
+
+        print("\n--- All Patients in Hospital ---")
+        if not self.patients:
+            print("No patients registered.")
+        else:
+            for p in self.patients.values():
+                print(p)
 
 def main():
     hospital = Hospital()
@@ -105,7 +124,7 @@ def main():
         elif choice == "4":
             doctor_name = input("Enter doctor name: ")
             patients = hospital.show_doctor_patients(doctor_name)
-            if isinstance(patients, str):
+            if isinstance(patients, str):  # error message
                 print(patients)
             else:
                 if not patients:
@@ -128,11 +147,12 @@ def main():
 
         elif choice == "7":
             print("Exiting...")
+            hospital.summary()
             break
 
         else:
             print("Invalid choice. Try again.")
 
 
-if __name__ == "__main__":
-    main()
+if _name_ == "_main_":
+    main()
