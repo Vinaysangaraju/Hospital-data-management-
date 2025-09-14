@@ -31,7 +31,7 @@ class Doctor:
 class Hospital:
     def __init__(self):
         self.doctors = {}
-        self.patients = {}  # Dictionary for quick lookup
+        self.patients = {}  
 
     def add_doctor(self, name, specialization):
         if name in self.doctors:
@@ -46,7 +46,7 @@ class Hospital:
             print(f"Patient {name} already exists.")
             return
         patient = Patient(name, age, disease)
-        self.patients[name] = patient  # store in hash map
+        self.patients[name] = patient 
         print(f"Patient {name} added.")
 
     def assign_patient(self, patient_name, doctor_name):
